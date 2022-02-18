@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../styles/loader.css">
+    <link rel="stylesheet" href="../styles/views.css">
+    <link rel="stylesheet" href="../styles/animations.css">
+    <link rel="stylesheet" href="../styles/fonts.css">
+    <link rel="stylesheet" href="../styles/start.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/controller.css">
+    <link rel="stylesheet" href="../styles/buttonStates.css">
+    <link rel="stylesheet" href="../styles/endView.css">
+</head>
+
+<body>
+    <div id="views">
+        <div id="welcome"   class="view">
+            <p id="welcomeText">Welcome to Vocabulaire du climat</p>
+            <div id="container">
+                
+
+                <div class="button" id="startButton"><p class="current">Start</p></div>
+            </div>
+        </div>
+
+        <div id="recording" class="view">
+            
+        </div>
+    </div>
+
+    <audio id="voice" src=""></audio>
+
+    <div id="loadingScreen">
+        <div id="loader">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
+    </div>
+
+    <script src="../scripts/loader.js"></script>
+    <script src="../scripts/tools.js"></script>
+    <script src="../scripts/flow.js"></script>
+    <script src="../scripts/view.js"></script>
+    <script src="../scripts/network.js"></script>
+    <script src="../scripts/videoManager.js"></script>
+    <script src="../scripts/audioManager.js"></script>
+    <script src="../scripts/recorder.js"></script>
+    <script src="../scripts/controller.js"></script>
+    <script src="../scripts/reviewFlow.js"></script>
+    <script src="../scripts/recordingFlow.js"></script>
+    <script src="../scripts/activityManagerCallback.js"></script>
+</body>
+
+</html>

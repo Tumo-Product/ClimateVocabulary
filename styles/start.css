@@ -1,0 +1,29 @@
+#welcomeText {
+    position: absolute;
+    top: 237px;
+    font-size: 35px;
+    font-family: FedraBold;
+    color: #EBA4A4;
+    transition: 1s;
+}
+
+#startButton {
+    height: 63px;
+    width: 179.4px;
+    border-radius: 15px;
+    background-color: #F3F3F3;
+    box-shadow: 5px 5px 5px 0 rgba(222,222,230,0.5), -3px -3px 5px 0 #FEFEFE;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 0.5s;
+
+    position: absolute;
+    bottom: 5.25px;
+}
+
+#startButton p {
+    font-size: 30px;
+    color: #5C7CA6;
+}

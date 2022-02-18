@@ -1,0 +1,26 @@
+.welcomeOver {
+    top: -100px !important;
+    opacity: 0;
+    animation: fadeOut 0.3s ease;
+    animation-fill-mode: forwards;
+}
+
+.startUnder {
+    bottom: -100px !important;
+}
+
+@keyframes fadeOut {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}
+
+.openedContainer {
+    width: 777px !important;
+    height: 497px !important;
+    bottom: 97px !important;
+}
