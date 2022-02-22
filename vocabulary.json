@@ -1,0 +1,41 @@
+{
+    "vocabulary" : {
+        "digital": [
+            "Émissions anthropiques",
+            "Émissions de CO2",
+            "Sources de carbone",
+            "Cycle carbone",
+            "Boisement",
+            "Déforestation",
+            "Sequestration du",
+            "Empreinte carbone",
+            "Captage du carbone",
+            "Gaz à effet de serre",
+            "Désertification"
+        ],
+        "awareness": [
+            "Gaspillage plastique",
+            "Effet de serre",
+            "Gaz à effet de serre",
+            "Feux de forêts",
+            "Empreinte carbone",
+            "Taxe sur l'empreinte",
+            "Compensation carbone",
+            "Puits de carbone",
+            "Stockage carbone",
+            "Intensité énergétique"
+        ]
+    },
+
+    "sets": {
+        "digital_awareness": {
+            "question": "Définis les termes suivants et donne un exemple d'une action que tu entreprends  et qui contribuerait au terme.",
+            "starters": [
+                "Émissions anthropiques",
+                "Gaspillage plastique",
+                "Émissions de CO2",
+                "Taxe sur l'empreinte"
+            ]
+        }
+    }
+}

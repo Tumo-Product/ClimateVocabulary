@@ -1,0 +1,86 @@
+.deactivated .current {
+    color: #E8E8EC;
+}
+
+#controller .button.deactivated .current {
+    filter: grayscale(1) !important;
+    opacity: 0.3 !important;
+}
+
+.disabled {
+    pointer-events: none;
+}
+
+#container .term.deactivated {
+    box-shadow: 3px 3px 4px 0 rgba(222,222,230,0.5), -3px -3px 4px 0 #FEFEFE !important;
+}
+
+#tasks .term.deactivated {
+    box-shadow: 5px 5px 5px 0 rgba(222,222,230,0.5), -3px -3px 5px 0 #FEFEFE !important;
+}
+
+.deactivated p {
+    color: rgba(222,222,230,0.91) !important;
+}
+
+.deactivated .active {
+    opacity: 0 !important;
+}
+
+.deactivated .inactive {
+    opacity: 1 !important;
+}
+
+.deactivated .arrow {
+    opacity: 0 !important;
+}
+
+.deactivated .deactivatedArrow {
+    opacity: 1 !important;
+}
+
+.inactive {
+    opacity: 0;
+}
+
+.recording .icon {
+    border-radius: 2px !important;
+}
+
+.invisible {
+    opacity: 0;
+    pointer-events: none;
+}
+
+.current {
+    opacity: 1 !important;
+    transition: 0.2s;
+}
+
+.button:hover .current {
+    opacity: 0.7 !important;
+}
+
+.button:active .current {
+    opacity: 0.5 !important;
+}
+
+.button:active .inside {
+    opacity: 0 !important;
+}
+
+.deselect {
+    height: 18px;
+    width: 18px;
+    border-radius: 4px;
+    background-color: rgba(222,222,230,0.5);
+    box-shadow: inset 1px 1px 1px 0 #C1C1C1;
+}
+
+.select {
+    height: 18px;
+    width: 18px;
+    border-radius: 4px;
+    background-color: #67B692;
+    box-shadow: 1px 1px 1px 0 rgba(187,187,206,0.62), -1px -1px 1px 0 #FEFEFE;
+}

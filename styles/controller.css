@@ -1,0 +1,130 @@
+#controller {
+    height: 421px;
+    width: 292px;
+    border-radius: 11px;
+    position: absolute;
+    left: 548px;
+    top: 145px;
+    transition: 1s;
+    overflow: hidden;
+
+    display: flex;
+    justify-content: center;
+}
+
+#controller:before {
+    content: '';
+    position: absolute;
+    box-shadow: inset -2px -2px 5px 0 #FFFFFF, inset 1px 1px 3px 1px rgba(222,222,230,0.72);
+    height: 100%;
+    width: 100%;
+    border-radius: 11px;
+    z-index: 1;
+    pointer-events: none;
+}
+
+#recorder {
+    transition: 0.5s;
+    width: 266px;
+    height: 51px;
+    border-radius: 48.5px;
+    background-color: #F3F3F3;
+    box-shadow: 2px 2px 2px 0 rgba(222,222,230,0.5), -2px -2px 2px 0 #FEFEFE;
+    position: absolute;
+    top: 21px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.recorderLeft {
+    left: 7px;
+}
+
+.recorderRight {
+    left: 363px;
+}
+
+/* VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV Buttons VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV */
+.icon {
+    opacity: 0;
+    position: absolute;
+    transition: 0.2s;
+    animation: appear 0.2s linear;
+}
+
+#centerBtn .icon {
+    z-index: 1;
+}
+
+#leftBtn {
+    left: 7px;
+}
+
+#rightBtn {
+    right: 7px
+}
+
+#record {
+    width: 18px;
+    height: 18px;
+    border-radius: 100%;
+    background-color: #E85156;
+}
+
+#pause {
+    height: 17px;
+}
+
+#confirm {
+    width: 22px;
+}
+
+#play {
+    margin-left: 4px;
+    width: 16px;
+}
+
+#cancel {
+    width: 18px;
+}
+
+div[role="progressbar"] {
+    position: absolute;
+    z-index: 0;
+    --size: 2.9rem;
+    --fg: #EBA4A4;
+    --bg: #f3f3f300;
+    --pgPercentage: var(--value);
+    width: var(--size);
+    height: var(--size);
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    background: 
+      radial-gradient(closest-side, #F3F3F3 85%, transparent 0 99.9%, #F3F3F3 0),
+      conic-gradient(var(--fg) calc(var(--pgPercentage) * 1%), var(--bg) 0);
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: calc(var(--size) / 5);
+    color: var(--fg);
+}
+
+
+/* Cutouts */
+#cutouts {
+    position: absolute;
+    top: 16px;
+    gap: 48px;
+    height: 388px;
+    
+    display: flex;
+    flex-direction: column;
+}
+
+.cutout {
+    height: 61px;
+    width: 277px;
+    border-radius: 48.5px;
+    background-color: #F3F3F3;
+    box-shadow: inset -3px -3px 5px 0 #FEFEFE, inset 3px 3px 5px 0 rgba(222,222,230,0.5);
+}

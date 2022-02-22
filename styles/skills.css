@@ -1,0 +1,39 @@
+.decarbonization {
+    box-shadow: 3px 3px 4px 0 rgba(178,178,66,0.3), -3px -3px 4px 0 #FEFEFE;
+}
+
+.decarbonizationParagraph {
+    color: #B2B242;
+}
+
+.awareness {
+    box-shadow: 3px 3px 4px 0 rgba(224,171,47,0.3), -3px -3px 4px 0 #FEFEFE;
+}
+
+.awarenessParagraph {
+    color: #E0AB2F;
+}
+
+.digital {
+    box-shadow: 3px 3px 4px 0 rgba(75,123,60,0.3), -3px -3px 5px 0 #FEFEFE;
+}
+
+.digitalParagraph {
+    color: #4B7B3C;
+}
+
+.transportation {
+    box-shadow: 3px 3px 4px 0 rgba(98,181,133,0.3), -3px -3px 4px 0 #FEFEFE;
+}
+
+.transportationParagraph {
+    color: #62B585;
+}
+
+.clothing {
+    box-shadow: 3px 3px 4px 0 rgba(75,136,121,0.3), -3px -3px 4px 0 #FEFEFE;
+}
+
+.clothingParagraph {
+    color: #4B8879;
+}

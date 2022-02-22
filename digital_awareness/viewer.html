@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../styles/loader.css">
+    <link rel="stylesheet" href="../styles/animations.css">
+    <link rel="stylesheet" href="../styles/fonts.css">
+    <link rel="stylesheet" href="../styles/start.css">
+    <link rel="stylesheet" href="../styles/main.css">
+    <link rel="stylesheet" href="../styles/controller.css">
+    <link rel="stylesheet" href="../styles/buttonStates.css">
+    <link rel="stylesheet" href="../styles/skills.css">
+</head>
+
+<body>
+    <div class="bodyContainer">
+        <div id="views">
+            <div id="welcome"   class="view">
+                <p id="welcomeText">Welcome to Vocabulaire du climat</p>
+                <div id="container">
+
+
+                    <div class="button" id="startButton"><p class="icon current">Start</p></div>
+                </div>
+
+                <div class="button downButton circle viewChanger invisible deactivated disabled">
+                    <img class="deactivatedArrow icon current" class="" src="../icons/deactivatedArrow.png">
+                    <img class="arrow icon" class="icon" src="../icons/arrow.png">
+                </div>
+            </div>
+
+            <div id="recording" class="view">
+                <div id="question">
+                    <p>Définis les termes suivants et fournis un exemple pour chacun,<br> basé sur un objet que tu possèdes.</p>
+                </div>
+
+                <div class="button upButton circle viewChanger deactivated disabled">
+                    <img class="deactivatedArrow icon current" class="" src="../icons/deactivatedArrow.png">
+                    <img class="arrow icon" class="icon" src="../icons/arrow.png">
+                </div>
+
+                <div id="tasks">
+                    <div class="termCutout">
+                        <div class="term button deactivated" id="s0t0">
+                            <img class="icon current inactive" src="../icons/skills/decarbonizationDeactivated.svg">
+                            <img class="icon current active" src="../icons/skills/decarbonization.svg">
+                            <p class="icon current">Atténuation du<br> changement Climatique</p>
+                        </div>
+                    </div>
+                    <div class="termCutout">
+                        <div class="term button deactivated" id="s0t1">
+                            <img class="icon current inactive" src="../icons/skills/decarbonizationDeactivated.svg">
+                            <img class="icon current active" src="../icons/skills/decarbonization.svg">
+                            <p class="icon current">Atténuation du<br> changement Climatique</p>
+                        </div>
+                    </div>
+                    <div class="termCutout">
+                        <div class="term button deactivated" id="s1t0">
+                            <img class="icon current inactive" src="../icons/skills/decarbonizationDeactivated.svg">
+                            <img class="icon current active" src="../icons/skills/decarbonization.svg">
+                            <p class="icon current">Atténuation du<br> changement Climatique</p>
+                        </div>
+                    </div>
+                    <div class="termCutout">
+                        <div class="term button deactivated" id="s1t1">
+                            <img class="icon current inactive" src="../icons/skills/decarbonizationDeactivated.svg">
+                            <img class="icon current active" src="../icons/skills/decarbonization.svg">
+                            <p class="icon current">Atténuation du<br> changement Climatique</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div id="controller">
+                    <div id="cutouts">
+                        <div id="c_s0t0" class="cutout"></div>
+                        <div id="c_s0t1" class="cutout"></div>
+                        <div id="c_s1t0" class="cutout"></div>
+                        <div id="c_s1t1" class="cutout"></div>
+                    </div>
+
+                    <div id="recorder">
+                        <div class="button circle deactivated disabled" id="leftBtn">
+                            <div class="inside"></div>
+                            <div class="icon" id="record"></div>
+                            <img class="icon current" src="../icons/pause.png" id="pause">
+                            <img class="icon" src="../icons/cancel.png" id="cancel">
+                        </div>
+                        
+                        <div class="button circle" id="centerBtn">
+                            <div class="inside"></div>
+                            <div class="icon current" id="record"></div>
+                            <img class="icon" src="../icons/pause.png" id="pause">
+                            <img class="icon" src="../icons/play.png" id="play">
+                            <div id="progress" role="progressbar" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100" style="--value:0"></div>
+                        </div>
+        
+                        <div class="button circle invisible" id="rightBtn">
+                            <div class="inside"></div>
+                            <img class="icon current" src="../icons/checkmark.png" id="confirm">
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+
+    <audio id="voice"></audio>
+
+    <div id="loadingScreen">
+        <div id="loader">
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+            <div class="line"></div>
+        </div>
+    </div>
+
+    <script src="../scripts/loader.js"></script>
+    <script src="../scripts/tools.js"></script>
+    <script src="../scripts/flow.js"></script>
+    <script src="../scripts/taskManager.js"></script>
+    <script src="../scripts/view.js"></script>
+    <script src="../scripts/network.js"></script>
+    <script src="../scripts/videoManager.js"></script>
+    <script src="../scripts/audioManager.js"></script>
+    <script src="../scripts/recorder.js"></script>
+    <script src="../scripts/controller.js"></script>
+    <script src="../scripts/reviewFlow.js"></script>
+    <script src="../scripts/recordingFlow.js"></script>
+    <script src="../scripts/activityManagerCallback.js"></script>
+</body>
+
+</html>

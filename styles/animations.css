@@ -5,10 +5,6 @@
     animation-fill-mode: forwards;
 }
 
-.startUnder {
-    bottom: -100px !important;
-}
-
 @keyframes fadeOut {
     0% {
         opacity: 1;
@@ -19,8 +15,59 @@
     }
 }
 
+@keyframes appear {
+    0% {
+        opacity: 0;
+    } 
+
+    100% {
+        opacity: 1;
+    }
+}
+
+
+/*      Transitions     */
+.startUnder {
+    bottom: -100px !important;
+}
+
 .openedContainer {
     width: 777px !important;
     height: 497px !important;
     bottom: 97px !important;
+}
+
+.closedVertically {
+    height: 0 !important;
+    margin-top: 171px;
+}
+
+.over {
+    margin-top: -420px;
+}
+
+.offscreenRight {
+    left: 900px !important;
+}
+
+.offscreenLeft {
+    right: 900px !important;
+}
+
+.onTop {
+    top: 30px !important;
+}
+
+.under {
+    top: 600px !important;
+}
+
+.closed {
+    width: 0 !important;
+    padding: 0 !important;
+}
+
+.closed .icon {
+    opacity: 0 !important;
+    pointer-events: none !important;
 }
