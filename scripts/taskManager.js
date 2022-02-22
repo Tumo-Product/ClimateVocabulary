@@ -31,9 +31,9 @@ const taskManager = {
     },
 
     findUncompleted : () => {
-        for (const key in responses) {
+        for (const key in taskManager.responses) {
             for (let i = 0; i < 2; i++) {
-                if (responses[key][i] === undefined) {
+                if (taskManager.responses[key][i] === undefined) {
                     return { skill: skills.indexOf(key), which: i };
                 }
             }
@@ -63,10 +63,13 @@ const taskManager = {
         responses[skills[current.skill]][current.which] = currBaseAudio;
         let length = responses[skills[0]].length + responses[skills[1]].length;
         taskView.complete(current.skill, current.which);
-        taskManager.beginTask(taskManager.findUncompleted());
+        let uncompleted = taskManager.findUncompleted();
+        let s = uncompleted.skill;
+        let t = uncompleted.which;
+        taskManager.beginTask(s, t, $(`#s${s}t${t}`));
     
         if (length === 4) { // TODO: Enable up arrow.
-            
+
             // TODO: add beta network calls to fill up recordings.
             return;
         }
