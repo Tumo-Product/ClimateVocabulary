@@ -2,6 +2,7 @@ const controller = {
     recording:  false,
     playing:    false,
     paused:     false,
+    time:       0,
 
     interval:   undefined,
     pauseInterval: undefined,
@@ -10,7 +11,7 @@ const controller = {
     setup: async () => {
         $("#centerBtn").click(controller.recordClickHandler);
         $("#leftBtn").click(controller.pauseClickHandler);
-        document.getElementById("voice").addEventListener("ended", function() {
+        document.getElementById("myVoice").addEventListener("ended", function() {
             view.replaceButton("centerBtn", "#play");
             controller.playing = false;
         });
@@ -53,7 +54,7 @@ const controller = {
         $("#controller .button").unbind("click");
         $("#centerBtn").click(controller.recordClickHandler);
         $("#leftBtn").click(controller.pauseClickHandler);
-        audioManager.pause();
+        audioManager.pause("my");
 
         controllerView.cancel();
         controller.playing = false;
@@ -63,38 +64,39 @@ const controller = {
         controller.playing = !controller.playing;
         
         if (controller.playing) {
-            audioManager.play();
+            audioManager.play("my");
             view.replaceButton("centerBtn", "#pause");
         } else {
-            audioManager.pause();
+            audioManager.pause("my");
             view.replaceButton("centerBtn", "#play");
         }
     },
 
     complete: async () => {
         controller.cancel();
-        taskManager.handleAnswer();
+        taskManager.handleAnswer(controller.time);
     },
 
     record : async () => {
+        controller.time = 0;
         recorder.start();
         controllerView.record();
         let startTime = new Date().getTime();
 
         controller.interval = setInterval(function () {
             let currTime = new Date().getTime();
-            let time = currTime - startTime - controller.timePaused;
-            let progress = time / 30000 * 100;
+            controller.time = currTime - startTime - controller.timePaused;
+            let progress = controller.time / 30000 * 100;
             controllerView.updateProgress(progress);
             
-            if (time >= 5000) {
+            if (controller.time >= 5000) {
                 $("#centerBtn").removeClass("deactivated disabled");
             }
-            if (time >= 30000) {
+            if (controller.time >= 30000) {
                 controller.stopRecording();
             }
 
-            if (time < 0) time = 0;
+            if (controller.time < 0) time = 0;
         }, 100);
     },
     pause : async () => {

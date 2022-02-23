@@ -109,6 +109,28 @@ div[role="progressbar"] {
     color: var(--fg);
 }
 
+#bigPlay {
+    position: absolute;
+    top: 561px;
+    height: 70px;
+    width: 70px;
+    background-color: #F3F3F3;
+    box-shadow: 2px -1px 2px 0 #FEFEFE, -1px 2px 2px 0 rgba(0,0,0,0.16);
+    display: flex;
+    justify-content: center;
+    border-radius: 100%;
+    align-items: center;
+    transition: 0.5s;
+}
+
+#bigPlayIcon {
+    margin-left: 10px;
+    height: 41px;
+}
+
+#bigPauseIcon {
+    height: 31px;
+}
 
 /* Cutouts */
 #cutouts {

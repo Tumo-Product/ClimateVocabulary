@@ -53,26 +53,48 @@ const taskManager = {
     
     handleRecording : async () => {
         currBaseAudio = await recorder.getBaseAudio();
-        audioManager.setAudioSource(currBaseAudio);
+        audioManager.setAudioSource("my", currBaseAudio);
     },
     
-    handleAnswer    : async () => {
+    handleAnswer    : async (duration) => {
         let responses   = taskManager.responses;
         let current     = taskManager.current;
 
         responses[skills[current.skill]][current.which] = currBaseAudio;
         let length = responses[skills[0]].length + responses[skills[1]].length;
         taskView.complete(current.skill, current.which);
+    
+        if (length === 4) {
+            view.enableButton("upButton");
+            
+            for (const key in taskManager.tasks) {
+                for (let i = 0; i < taskManager.tasks[key].length; i++) {
+                    let word = taskManager.tasks[key][i];
+                    newRecordings.push(word);
+
+                    recordings[word] = {
+                        skill: key,
+                        sources: [ {
+                            owners  : owners,
+                            src     : responses[key][i],
+                            duration: duration
+                        }],
+                    }
+                }
+            }
+
+            console.log(newRecordings);
+            for (let i = 0; i < newRecordings.length; i++) {
+                let r = newRecordings[i];
+                await network.addRecording(r, recordings[r].sources[0].owners, recordings[r].skill, recordings[r].sources[0].src, recordings[r].sources[0].duration);
+            }
+            return;
+        }
+
         let uncompleted = taskManager.findUncompleted();
         let s = uncompleted.skill;
         let t = uncompleted.which;
         taskManager.beginTask(s, t, $(`#s${s}t${t}`));
-    
-        if (length === 4) { // TODO: Enable up arrow.
-
-            // TODO: add beta network calls to fill up recordings.
-            return;
-        }
     }
 }
 

@@ -39,7 +39,8 @@
 
 .closedVertically {
     height: 0 !important;
-    margin-top: 171px;
+    margin-top: 210px;
+    pointer-events: none;
 }
 
 .over {

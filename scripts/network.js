@@ -1,5 +1,10 @@
 axios.defaults.baseURL = "https://content-tools.tumo.world:4000";
 
+const config = {
+    addRecording: '/climate_vocabulary/add_recording',
+    list        : '/climate_vocabulary/list_recordings'
+}
+
 const network = {
     getSetName: async () => {
         let href = document.location.href;
@@ -10,5 +15,18 @@ const network = {
     getVocabulary: async () => {
         await $.get(`../vocabulary.json`, function (json) { data = json; });
         return data;
+    },
+
+    addRecording: async (term, owners, skill, file, duration) => {
+        if (!Array.isArray(owners)) {
+            owners = [owners];
+        }
+
+        let req = { term: term, owners: JSON.stringify(owners), skill: skill, file: file, duration: duration };
+        return await axios.post(config.addRecording, req);
+    },
+
+    list        : async (query) => {
+        return await axios.post(config.list, { query: query === undefined ? "{}" : JSON.stringify(query) });
     }
 }

@@ -22,16 +22,23 @@
     <div class="bodyContainer">
         <div id="views">
             <div id="welcome"   class="view">
-                <p id="welcomeText">Welcome to Vocabulaire du climat</p>
+                <p id="welcomeText">Bienvenue au Vocabulaire du climat</p>
+
+                <div id="containerCopy"></div>
+
                 <div id="container">
+                    <div class="button" id="startButton"><p class="icon current">Démarrer</p></div>
+                </div>
 
-
-                    <div class="button" id="startButton"><p class="icon current">Start</p></div>
+                <div class="button circle invisible disabled" id="bigPlay">
+                    <div class="inside"></div>
+                    <img class="icon" src="../icons/bigPause.png" id="bigPauseIcon">
+                    <img class="icon current" src="../icons/bigPlay.png" id="bigPlayIcon">
                 </div>
 
                 <div class="button downButton circle viewChanger invisible deactivated disabled">
-                    <img class="deactivatedArrow icon current" class="" src="../icons/deactivatedArrow.png">
-                    <img class="arrow icon" class="icon" src="../icons/arrow.png">
+                    <img class="deactivatedArrow icon" class="" src="../icons/deactivatedArrow.png">
+                    <img class="arrow icon current" class="icon" src="../icons/arrow.png">
                 </div>
             </div>
 
@@ -41,8 +48,8 @@
                 </div>
 
                 <div class="button upButton circle viewChanger deactivated disabled">
-                    <img class="deactivatedArrow icon current" class="" src="../icons/deactivatedArrow.png">
-                    <img class="arrow icon" class="icon" src="../icons/arrow.png">
+                    <img class="deactivatedArrow icon" class="" src="../icons/deactivatedArrow.png">
+                    <img class="arrow icon current" class="icon" src="../icons/arrow.png">
                 </div>
 
                 <div id="tasks">
@@ -111,7 +118,8 @@
         </div>
     </div>
 
-    <audio id="voice"></audio>
+    <audio id="myVoice"></audio>
+    <audio id="otherVoice"></audio>
 
     <div id="loadingScreen">
         <div id="loader">
