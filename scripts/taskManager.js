@@ -92,10 +92,10 @@ const taskManager = {
                 }
             }
 
-            for (let i = 0; i < newRecordings.length; i++) {
-                let r = newRecordings[i];
-                await network.addRecording(r, recordings[r].sources[0].owners, recordings[r].skill, recordings[r].sources[0].src, recordings[r].sources[0].duration);
-            }
+            // for (let i = 0; i < newRecordings.length; i++) {
+            //     let r = newRecordings[i];
+            //     await network.addRecording(r, recordings[r].sources[0].owners, recordings[r].skill, recordings[r].sources[0].src, recordings[r].sources[0].duration);
+            // }
             return;
         }
 
