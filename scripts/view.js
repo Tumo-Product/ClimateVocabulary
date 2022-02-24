@@ -15,8 +15,10 @@ const view = {
 
     setupFinalView: async () => {
         $("#container").css("overflow", "scroll");
-        // $("#container").css("height", 431);
-        // $("#containerCopy").css("height", 431);
+        // TODO change sizes
+        $("#container").css("height", 431);
+        $("#containerCopy").css("height", 431);
+
         $("#container").empty();
         $(".downButton").addClass("invisible disabled");
         $("#bigPlay").removeClass("invisible disabled");
@@ -48,7 +50,7 @@ const view = {
         }
     },
 
-    addTerm   : (index, word, row, from, progressBarCount, disabled) => {
+    addTerm   : (index, word, row, from, progressBarCount, featured, disabled) => {
         $(`#r_${row}`).append(`<div id="w_${index}" class="button term ${from}"><p class="current ${from}Paragraph">${word}</p></div>`);
         let obj = $(`#w_${index}`);
 
@@ -60,6 +62,10 @@ const view = {
 
         if (disabled) {
             obj.addClass("deactivated disabled");
+        }
+
+        if (featured) {
+            obj.addClass("featured");
         }
 
         return obj;

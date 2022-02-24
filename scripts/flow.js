@@ -19,6 +19,8 @@ const onLoad = async () => {
         vocabulary[key] = await shuffle(vocabulary[key]);
         shuffledVocab = shuffledVocab.concat(vocabulary[key]);
     }
+
+    shuffledVocab = await shuffle(shuffledVocab);
     
     let name = await network.getSetName();
     skills = name.split('_');
@@ -72,20 +74,24 @@ const addButtons = async (animate, activatedWords) => {
     let itemCount = 0;
 
     for (let r = 0; r < rowCount; r++) {
-        view.addRow(r, animate);
+        view.addRow(r, !Array.isArray(animate));
 
         for (let i = 0; i < 3; i++) {
             let key = shuffledVocab[itemCount];
             let disabled = false;
+            let featured = false;
 
             if (Array.isArray(activatedWords)) {
                 disabled = !activatedWords.includes(key);
+            }
+            if (Array.isArray(animate)) {
+                featured = animate.includes(key);
             }
 
             let from = whichSkill(key);
             let progressBarCount = recordings[key].sources.length;
             let index = shuffledVocab.indexOf(key);
-            let obj = view.addTerm(index, key, r, from, progressBarCount, disabled);
+            let obj = view.addTerm(index, key, r, from, progressBarCount, featured, disabled);
             obj.click(() => { player.play(index) });
 
             itemCount++;
@@ -120,8 +126,17 @@ const setupRecordingView = async () => {
 
 const setupFinalView = async () => {
     view.move(1);
+
+    let indices = getRandomIndices(4, 12);
+
+    let featuredWords = [];
+    for (let i = 0; i < newRecordings.length; i++) {
+        replaceWith(shuffledVocab, newRecordings[i], indices[i]);
+        featuredWords[i] = shuffledVocab[indices[i]];
+    }
+
     view.setupFinalView();
-    addButtons(false);
+    addButtons(featuredWords);
 }
 
 const whichSkill = (word) => {

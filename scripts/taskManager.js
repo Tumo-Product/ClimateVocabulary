@@ -66,24 +66,32 @@ const taskManager = {
     
         if (length === 4) {
             view.enableButton("upButton");
+            $("#centerBtn").addClass("deactivated disabled");
             
             for (const key in taskManager.tasks) {
                 for (let i = 0; i < taskManager.tasks[key].length; i++) {
                     let word = taskManager.tasks[key][i];
                     newRecordings.push(word);
 
-                    recordings[word] = {
-                        skill: key,
-                        sources: [ {
+                    if (recordings[word] === undefined) {
+                        recordings[word] = {
+                            skill: key,
+                            sources: [ {
+                                owners  : owners,
+                                src     : responses[key][i],
+                                duration: duration
+                            }],
+                        }
+                    } else {
+                        recordings[word].sources.push({
                             owners  : owners,
                             src     : responses[key][i],
                             duration: duration
-                        }],
+                        });
                     }
                 }
             }
 
-            console.log(newRecordings);
             for (let i = 0; i < newRecordings.length; i++) {
                 let r = newRecordings[i];
                 await network.addRecording(r, recordings[r].sources[0].owners, recordings[r].skill, recordings[r].sources[0].src, recordings[r].sources[0].duration);

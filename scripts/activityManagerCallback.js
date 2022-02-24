@@ -26,7 +26,7 @@ const initialize = () => {
     window.parent.postMessage({
         application: 'activity-manager',
         message: 'set-iframe-height',
-        data: { iframeHeight: 600 }
+        data: { iframeHeight: 650 }
     }, '*');
 }
 
