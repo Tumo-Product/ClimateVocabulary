@@ -46,6 +46,8 @@ const setupEvents = async () => {
     $(".upButton").click(setupFinalView);
     $(".downButton").click(setupRecordingView);
     $("#bigPlay").click(player.toggle);
+
+    $("#searchBtn").click(filter.search);
 }
 
 const listenedTo = () => {
@@ -136,6 +138,7 @@ const setupFinalView = async () => {
     }
 
     view.setupFinalView();
+    filterView.show();
     addButtons(shuffledVocab, Object.keys(recordings).length, false, featuredWords);
 }
 

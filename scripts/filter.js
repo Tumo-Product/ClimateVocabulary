@@ -1,6 +1,24 @@
 const filter = {
     activated: {},
 
+    search: async () => {
+        let query = $("#searchBar").val().trim();
+        let found = [];
+
+        for (let i = 0; i < shuffledVocab.length; i++) {
+            let regexp = new RegExp(`${query}`, "i");
+
+            if (regexp.test(shuffledVocab[i])) {
+                found.push(shuffledVocab[i]);
+            }
+        }
+
+        await filterView.emptyContainer();
+        found = shuffle(found);
+        addButtons(found, found.length, false);
+        filterView.makeTermsAppear();
+    },
+
     add: (skill) => {
         filter.activated[skill] = false;
         let obj = filterView.add(skill);
@@ -81,5 +99,9 @@ const filterView = {
 
     makeTermsAppear: async () => {
         $("#container .term").addClass("appear");
+    },
+
+    show    : () => {
+        $("#filter").css("display", "flex");
     }
 }
