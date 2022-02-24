@@ -9,13 +9,14 @@ const view = {
         $("#container").css("overflow", "hidden");
         $("#container").addClass("openedContainer");
         $("#containerCopy").addClass("openedContainer");
-        $(".downButton").first().removeClass("invisible ");  // TODO: Change when done with playback view.
+        $(".downButton").first().removeClass("invisible ");
         $("#question p").html(question);
     },
 
     setupFinalView: async () => {
         $("#container").css("overflow", "scroll");
-        // TODO change sizes
+        $("#container").removeClass("openedContainer").addClass("finalContainer");
+        $("#containerCopy").removeClass("openedContainer").addClass("finalContainer");
         $("#container").css("height", 431);
         $("#containerCopy").css("height", 431);
 
@@ -60,15 +61,22 @@ const view = {
             obj.find(".progressBars").append(`<div class="progressBar" id="pB${i}"><div class="progress current"></div></div>`);
         }
 
-        if (disabled) {
-            obj.addClass("deactivated disabled");
-        }
-
-        if (featured) {
-            obj.addClass("featured");
-        }
-
+        if (disabled) { obj.addClass("deactivated disabled"); }
+        if (featured) { obj.addClass("featured"); }
+        view.fitText(obj);
         return obj;
+    },
+
+    fitText : async (obj) => {
+        let fontSize;
+        let paragraph = obj.find("p");
+        let width = obj.width() - 20;
+        let height = obj.height() - 15;
+
+        while (paragraph.prop("scrollWidth") > width || paragraph.prop("scrollHeight") > height) {
+            fontSize = parseInt(paragraph.css("font-size"), 10);
+            paragraph.css("font-size", fontSize - 2);
+        }
     }
 }
 

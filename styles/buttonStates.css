@@ -28,7 +28,7 @@
 }
 
 .deactivated .inactive {
-    opacity: 1 !important;
+    opacity: 1;
 }
 
 .deactivated .arrow {

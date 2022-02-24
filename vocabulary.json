@@ -174,13 +174,13 @@
     },
 
     "sets": {
-        "digital_awareness": {
+        "transportation_awareness": {
             "question": "Définis les termes suivants et donne un exemple d'une action que tu entreprends  et qui contribuerait au terme.",
             "starters": [
                 "Transport durable",
                 "Véhicules électriques",
                 "Engagement participatif",
-                "Programmes TV et radio sur l'environnement"
+                "Bénévolat"
             ]
         }
     }

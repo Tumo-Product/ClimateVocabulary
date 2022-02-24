@@ -15,7 +15,7 @@
     }
 }
 
-@keyframes appear {
+@keyframes fadeIn {
     0% {
         opacity: 0;
     } 
@@ -52,6 +52,33 @@
     }
 }
 
+.appear {
+    animation: appear 0.5s ease;
+}
+
+@keyframes appear {
+    0% {
+        transform: scale(0);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+.disappear {
+    animation: disappear 0.5s ease;
+}
+
+@keyframes disappear {
+    0% {
+        transform: scale(1);
+    }
+
+    100% {
+        transform: scale(0);
+    }
+}
 
 /*      Transitions     */
 .startUnder {
@@ -62,6 +89,12 @@
     width: 777px !important;
     height: 497px !important;
     bottom: 97px !important;
+}
+
+.finalContainer {
+    width: 777px !important;
+    height: 431px !important;
+    bottom: 120px !important;
 }
 
 .closedVertically {

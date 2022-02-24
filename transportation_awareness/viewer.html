@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="../styles/controller.css">
     <link rel="stylesheet" href="../styles/buttonStates.css">
     <link rel="stylesheet" href="../styles/skills.css">
+    <link rel="stylesheet" href="../styles/filter.css">
 </head>
 
 <body>
@@ -24,8 +25,20 @@
             <div id="welcome"   class="view">
                 <p id="welcomeText">Bienvenue au Vocabulaire Climatique !</p>
 
-                <div id="containerCopy"></div>
+                <div id="filter">
+                    <div id="filterButtons">
+                    </div>
 
+                    <div id="search">
+                        <input id="searchBar" type="text" placeholder="Rechercher des termes">
+                        <div id="searchBtn" class="button circle">
+                            <img src="../icons/search.png" alt="" class="icon current">
+                            <div class="inside"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="containerCopy"></div>
                 <div id="container">
                     <div class="button" id="startButton"><p class="icon current">Démarrer</p></div>
                 </div>
@@ -145,7 +158,7 @@
     <script src="../scripts/recorder.js"></script>
     <script src="../scripts/controller.js"></script>
     <script src="../scripts/reviewFlow.js"></script>
-    <script src="../scripts/recordingFlow.js"></script>
+    <script src="../scripts/filter.js"></script>
     <script src="../scripts/activityManagerCallback.js"></script>
 </body>
 

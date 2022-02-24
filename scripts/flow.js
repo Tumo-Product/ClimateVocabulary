@@ -16,6 +16,7 @@ const onLoad = async () => {
     vocabulary  = data.vocabulary;
 
     for (const key in vocabulary) {
+        filter.add(key)
         vocabulary[key] = await shuffle(vocabulary[key]);
         shuffledVocab = shuffledVocab.concat(vocabulary[key]);
     }
@@ -44,7 +45,6 @@ const setupEvents = async () => {
     $("#startButton").click(onStart);
     $(".upButton").click(setupFinalView);
     $(".downButton").click(setupRecordingView);
-
     $("#bigPlay").click(player.toggle);
 }
 
@@ -66,36 +66,36 @@ const onStart = async () => {
         activatedWords[i] = shuffledVocab[indices[i]];
     }
     
-    addButtons(true, activatedWords);
+    addButtons(shuffledVocab, Object.keys(recordings).length, true, undefined, activatedWords);
 }
 
-const addButtons = async (animate, activatedWords) => {
-    let rowCount = Math.ceil(Object.keys(recordings).length / 3);
+const addButtons = async (vocab, length, animate, featuredWords, activatedWords) => {
+    let rowCount = Math.ceil(length / 3);
     let itemCount = 0;
 
     for (let r = 0; r < rowCount; r++) {
-        view.addRow(r, !Array.isArray(animate));
+        view.addRow(r, animate);
 
         for (let i = 0; i < 3; i++) {
-            let key = shuffledVocab[itemCount];
+            let key = vocab[itemCount];
             let disabled = false;
             let featured = false;
 
             if (Array.isArray(activatedWords)) {
                 disabled = !activatedWords.includes(key);
             }
-            if (Array.isArray(animate)) {
-                featured = animate.includes(key);
+            if (Array.isArray(featuredWords)) {
+                featured = featuredWords.includes(key);
             }
 
             let from = whichSkill(key);
             let progressBarCount = recordings[key].sources.length;
-            let index = shuffledVocab.indexOf(key);
+            let index = vocab.indexOf(key);
             let obj = view.addTerm(index, key, r, from, progressBarCount, featured, disabled);
             obj.click(() => { player.play(index) });
 
             itemCount++;
-            if (itemCount == Object.keys(recordings).length) {
+            if (itemCount == length) {
                 break;
             }
         }
@@ -136,7 +136,7 @@ const setupFinalView = async () => {
     }
 
     view.setupFinalView();
-    addButtons(featuredWords);
+    addButtons(shuffledVocab, Object.keys(recordings).length, false, featuredWords);
 }
 
 const whichSkill = (word) => {
