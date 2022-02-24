@@ -71,11 +71,11 @@ const player = {
     toggle: () => {
         if (player.playing) {
             player.pause();
+            player.playing = false;
         } else {
             player.resume();
+            player.playing = true;
         }
-
-        player.playing = !player.playing;
     },
 
     play: (index) => {
@@ -101,8 +101,9 @@ const player = {
         let startTime = new Date().getTime();
         clearInterval(player.interval);
 
-        document.getElementById("otherVoice").currentTime = 0.01;
-        player.resume();
+        audioManager.play("other");
+        view.replaceButton("bigPlay", "#bigPauseIcon");
+        clearInterval(player.pauseInterval);
         player.interval = setInterval(() => {
             let currTime = new Date().getTime();
             let time = currTime - startTime - player.timePaused;
