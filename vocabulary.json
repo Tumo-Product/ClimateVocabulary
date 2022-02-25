@@ -82,7 +82,6 @@
             "Mouvement transfrontalier de déchets dangereux",
             "Trafic illégal de déchets électroniques",
             "Élimination des déchets électroniques",
-            "Décharge de déchets électroniques",
             "Centres de dépôt",
             "Recyclage des déchets électroniques",
             "Recyclage électronique",
@@ -96,7 +95,6 @@
             "Démagnétisation",
             "Recyclage des métaux",
             "Déchiquetage",
-            "Vol de données de déchets électroniques",
             "Vol d'identité",
             "Destruction des données"
         ],
@@ -181,6 +179,26 @@
                 "Véhicules électriques",
                 "Engagement participatif",
                 "Bénévolat"
+            ]
+        },
+
+        "clothing_decarbonization": {
+            "question": "Définis les termes suivants et donne un exemple d'une action que tu entreprends  et qui contribuerait au terme.",
+            "starters": [
+                "Mode éphémère",
+                "Fabrication rapide",
+                "Émissions de CO2",
+                "Déforestation"
+            ]
+        },
+
+        "digital_awareness": {
+            "question": "Définis les termes suivants et donne un exemple d'une action que tu entreprends  et qui contribuerait au terme.",
+            "starters": [
+                "Déchiquetage",
+                "Batteries",
+                "Débats publics",
+                "Formations"
             ]
         }
     }
