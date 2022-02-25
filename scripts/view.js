@@ -77,6 +77,21 @@ const view = {
             fontSize = parseInt(paragraph.css("font-size"), 10);
             paragraph.css("font-size", fontSize - 2);
         }
+    },
+
+    fitRecordingTerms: async () => {
+        $("#tasks .term").each(function (index) {
+            let fontSize;
+            let obj = $(this);
+            let paragraph = obj.find("p");
+            let width = paragraph.width();
+            let height = paragraph.height();
+            
+            while (paragraph.prop("scrollWidth") > width || paragraph.prop("scrollHeight") > height) {
+                fontSize = parseInt(paragraph.css("font-size"), 10);
+                paragraph.css("font-size", fontSize - 2);
+            }
+        });
     }
 }
 

@@ -153,7 +153,7 @@ const whichSkill = (word) => {
 $(onLoad);
 
 
-// DEBUG ----------------------
+// TESTING TOOLS ----------------------
 const intoJson = (string) => {
     let texts = string.split("\n");
     let finalText = "";
@@ -165,7 +165,7 @@ const intoJson = (string) => {
     return finalText;
 }
 
-uploadAll = async (src) => {
+const uploadAll = async (src) => {
     for (const key in vocabulary) {
         for (let i = 0; i < vocabulary[key].length; i++) {
             let word = vocabulary[key][i];

@@ -20,6 +20,8 @@ const taskManager = {
             }
         }
 
+        view.fitRecordingTerms();
+
         if (taskManager.responses[skills[0]] === undefined) {
             taskManager.responses[skills[0]] = [];
         }
@@ -63,36 +65,34 @@ const taskManager = {
         responses[skills[current.skill]][current.which] = currBaseAudio;
         let length = responses[skills[0]].length + responses[skills[1]].length;
         taskView.complete(current.skill, current.which);
-    
-        if (length === 4) {
+
+        let word = taskManager.tasks[skills[current.skill]][current.which];
+        newRecordings.push(word);
+
+        if (recordings[word] === undefined) {
+            recordings[word] = {
+                skill: skills[current.skill],
+                sources: [ {
+                    owners  : owners,
+                    src     : responses[key][current.which],
+                    duration: duration
+                }],
+            }
+        } else {
+            recordings[word].sources.push({
+                owners  : owners,
+                src     : responses[skills[current.skill]][current.which],
+                duration: duration
+            });
+        }
+
+        if (length === 2) {
+            view.enableButton("upButton");
+        } else if (length === 4) {
             view.enableButton("upButton");
             $("#centerBtn").addClass("deactivated disabled");
-            
-            for (const key in taskManager.tasks) {
-                for (let i = 0; i < taskManager.tasks[key].length; i++) {
-                    let word = taskManager.tasks[key][i];
-                    newRecordings.push(word);
 
-                    if (recordings[word] === undefined) {
-                        recordings[word] = {
-                            skill: key,
-                            sources: [ {
-                                owners  : owners,
-                                src     : responses[key][i],
-                                duration: duration
-                            }],
-                        }
-                    } else {
-                        recordings[word].sources.push({
-                            owners  : owners,
-                            src     : responses[key][i],
-                            duration: duration
-                        });
-                    }
-                }
-            }
-
-            // BETA CALL -----------------------------------------
+            // DEBUG CALL -----------------------------------------
             // for (let i = 0; i < newRecordings.length; i++) {
             //     let r = newRecordings[i];
             //     await network.addRecording(r, recordings[r].sources[0].owners, recordings[r].skill, recordings[r].sources[0].src, recordings[r].sources[0].duration);
@@ -142,6 +142,7 @@ const taskView = {
             }
         }
 
+        view.fitRecordingTerms();
         taskView.enable(0, 0);
     }
 }
