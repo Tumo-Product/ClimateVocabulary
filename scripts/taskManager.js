@@ -63,7 +63,6 @@ const taskManager = {
         let current     = taskManager.current;
 
         responses[skills[current.skill]][current.which] = currBaseAudio;
-        let length = responses[skills[0]].length + responses[skills[1]].length;
         taskView.complete(current.skill, current.which);
 
         let word = taskManager.tasks[skills[current.skill]][current.which];
@@ -86,9 +85,9 @@ const taskManager = {
             });
         }
 
-        if (length === 2) {
+        if (newRecordings.length === 2) {
             view.enableButton("upButton");
-        } else if (length === 4) {
+        } else if (newRecordings.length === 4) {
             view.enableButton("upButton");
             $("#centerBtn").addClass("deactivated disabled");
 
