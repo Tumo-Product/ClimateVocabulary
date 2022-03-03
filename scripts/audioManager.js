@@ -44,6 +44,7 @@ const player = {
     interval: undefined,
     pauseInterval: undefined,
     timePaused: 0,
+    firstTime: true,
 
     view : {
         resetProgress   : async (index) => {
@@ -79,6 +80,11 @@ const player = {
     },
 
     play: (index) => {
+        if (player.firstTime) {
+            player.firstTime = false;
+            $(".examinerBtn").removeClass("deactivated disabled");
+        }
+
         player.playingIndex = index;
         player.playing = true;
         player.view.enable(index);
@@ -128,6 +134,7 @@ const player = {
     },
 
     resume: () => {
+        if (player.playingIndex === -1) return;
         if (document.getElementById("otherVoice").currentTime === 0) {
             player.play(player.playingIndex);
             return;

@@ -68,22 +68,22 @@ const taskManager = {
         let word = taskManager.tasks[skills[current.skill]][current.which];
         newRecordings.push(word);
 
+        let source = {
+            owners  : owners,
+            src     : responses[skills[current.skill]][current.which],
+            duration: duration
+        }
+
         if (recordings[word] === undefined) {
             recordings[word] = {
                 skill: skills[current.skill],
-                sources: [ {
-                    owners  : owners,
-                    src     : responses[key][current.which],
-                    duration: duration
-                }],
+                sources: [source],
             }
         } else {
-            recordings[word].sources.push({
-                owners  : owners,
-                src     : responses[skills[current.skill]][current.which],
-                duration: duration
-            });
+            recordings[word].sources.push(source);
         }
+
+        answers.push({ term: word, owners: source.owners, skill: recordings[word].skill, file: source.src, duration: source.duration });
 
         if (newRecordings.length === 2) {
             view.enableButton("upButton");
@@ -91,7 +91,7 @@ const taskManager = {
             view.enableButton("upButton");
             $("#centerBtn").addClass("deactivated disabled");
 
-            // DEBUG CALL -----------------------------------------
+            // Add recordings on demand -----------------------------------------
             // for (let i = 0; i < newRecordings.length; i++) {
             //     let r = newRecordings[i];
             //     await network.addRecording(r, recordings[r].sources[0].owners, recordings[r].skill, recordings[r].sources[0].src, recordings[r].sources[0].duration);

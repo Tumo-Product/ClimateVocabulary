@@ -51,6 +51,10 @@ const view = {
         }
     },
 
+    disableButton: (obj) => {
+        obj.addClass("deactivated disabled");
+    },
+
     addTerm   : (index, word, row, from, progressBarCount, featured, disabled) => {
         $(`#r_${row}`).append(`<div id="w_${index}" class="button term ${from}"><p class="current ${from}Paragraph">${word}</p></div>`);
         let obj = $(`#w_${index}`);
@@ -61,7 +65,7 @@ const view = {
             obj.find(".progressBars").append(`<div class="progressBar" id="pB${i}"><div class="progress current"></div></div>`);
         }
 
-        if (disabled) { obj.addClass("deactivated disabled"); }
+        if (disabled) { view.disableButton(obj) }
         if (featured) { obj.addClass("featured"); }
         view.fitText(obj);
         return obj;

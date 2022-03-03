@@ -1,0 +1,41 @@
+.examinerBtn {
+    position: absolute;
+    bottom: 18px;
+    height: 58px;
+    width:  58px;
+    background-color: #F3F3F3;
+    box-shadow: 2px -1px 2px 0 #FEFEFE, -1px 2px 2px 0 rgba(0,0,0,0.16);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    transition: 0.5s;
+}
+
+.examinerBtn .icon {
+    opacity: 1;
+    height: 22px;
+    transition: 0.2s;
+}
+
+.examinerBtn:hover .icon {
+    opacity: 0.8;
+}
+
+.examinerBtn:active .icon {
+    opacity: 0.6;
+}
+
+#rejectButton {
+    left: 340px;
+}
+
+#awardButton {
+    right: 340px;
+}
+
+.deactivated.examinerBtn .icon {
+    filter: grayscale(1);
+    opacity: 0.3;
+}

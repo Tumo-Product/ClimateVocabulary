@@ -11,12 +11,14 @@ let currBaseAudio;
 let audioStream;
 let recorder;
 
+let answers = [];
+
 const onLoad = async () => {
     let data = await network.getVocabulary();
     vocabulary  = data.vocabulary;
 
     for (const key in vocabulary) {
-        filter.add(key)
+        filter.add(key);
         vocabulary[key] = await shuffle(vocabulary[key]);
         shuffledVocab = shuffledVocab.concat(vocabulary[key]);
     }
@@ -91,6 +93,10 @@ const addButtons = async (vocab, length, animate, featuredWords, activatedWords)
             }
 
             let from = whichSkill(key);
+            if (recordings[key] === undefined) {
+                itemCount++;
+                return;
+            }
             let progressBarCount = recordings[key].sources.length;
             let index = vocab.indexOf(key);
             let obj = view.addTerm(index, key, r, from, progressBarCount, featured, disabled);
@@ -150,8 +156,7 @@ const whichSkill = (word) => {
     }
 }
 
-$(onLoad);
-
+// $(onLoad);
 
 // TESTING TOOLS ----------------------
 const intoJson = (string) => {
