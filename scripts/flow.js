@@ -156,7 +156,11 @@ const whichSkill = (word) => {
     }
 }
 
-// $(onLoad);
+let recording = new URL(document.location.href).searchParams.get("recording");
+if (recording) {
+    $(".downButton").removeClass("deactivated disabled");
+    $(onLoad);
+}
 
 // TESTING TOOLS ----------------------
 const intoJson = (string) => {

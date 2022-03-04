@@ -84,18 +84,16 @@ const taskManager = {
         }
 
         answers.push({ term: word, owners: source.owners, skill: recordings[word].skill, file: source.src, duration: source.duration });
+        // Add recordings on demand -----------------------------------------
+        if (recording) {
+            await network.addRecording(word, [ "master" ], recordings[word].skill, source.src, source.duration);
+        } // ----------------------------------------------------------------
 
         if (newRecordings.length === 2) {
             view.enableButton("upButton");
         } else if (newRecordings.length === 4) {
             view.enableButton("upButton");
             $("#centerBtn").addClass("deactivated disabled");
-
-            // Add recordings on demand -----------------------------------------
-            // for (let i = 0; i < newRecordings.length; i++) {
-            //     let r = newRecordings[i];
-            //     await network.addRecording(r, recordings[r].sources[0].owners, recordings[r].skill, recordings[r].sources[0].src, recordings[r].sources[0].duration);
-            // }
             return;
         }
 
