@@ -4,12 +4,20 @@ const taskManager = {
     responses   : {},
 
     setup           : async (indices) => {
-        for (const key in indices) {
-            taskManager.tasks[key] = [];
-    
-            for (let i = 0; i < indices[key].length; i++) {
-                let index = indices[key][i];
-                taskManager.tasks[key][i] = vocabulary[key][index];
+        if (recordStarters) {
+            for (let s = 0; s < skills.length; s++) {
+                taskManager.tasks[skills[s]] = [];
+                taskManager.tasks[skills[s]][0] = set.starters[s == 0 ? 0 : 2];
+                taskManager.tasks[skills[s]][1] = set.starters[s == 0 ? 1 : 3];
+            }
+        } else {
+            for (const key in indices) {
+                taskManager.tasks[key] = [];
+        
+                for (let i = 0; i < indices[key].length; i++) {
+                    let index = indices[key][i];
+                    taskManager.tasks[key][i] = vocabulary[key][index];
+                }
             }
         }
 

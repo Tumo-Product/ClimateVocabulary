@@ -118,8 +118,8 @@ const replaceWith = (vocab, target, index) => {
 }
 
 const setupRecordingView = async () => {
-    audioStream = await audioManager.getAudioStream();
-    recorder    = new Recorder(audioStream);
+    // audioStream = await audioManager.getAudioStream();
+    // recorder    = new Recorder(audioStream);
 
     view.move(-1);
     controller.setup();
@@ -156,7 +156,10 @@ const whichSkill = (word) => {
     }
 }
 
-let recording = new URL(document.location.href).searchParams.get("recording");
+const params = new URL(document.location.href).searchParams;
+let recording = params.get("recording");
+let recordStarters = params.get("recordStarters");
+
 if (recording) {
     $(".downButton").removeClass("deactivated disabled");
     $(onLoad);
