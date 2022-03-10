@@ -72,6 +72,10 @@ audio {
     opacity: 1 !important;
 }
 
+.upButton {
+    bottom: 13px !important;
+}
+
 .upButton .icon {
     transform: scaleY(-1);
 }
@@ -89,16 +93,20 @@ audio {
 }
 
 #container .term {
+    transition: 0.3s;
     height: 94px;
     width: 231px;
     border-radius: 19px;
     background-color: #F3F3F3;
-    /* box-shadow: 3px 3px 4px 0 rgba(222,222,230,0.5), -3px -3px 4px 0 #FEFEFE; */
 
     position: relative;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.inactiveTerm {
+    box-shadow: 3px 3px 4px 0 rgba(222,222,230,0.5), -3px -3px 4px 0 #FEFEFE !important;
 }
 
 #container .term P {

@@ -1,6 +1,13 @@
 const filter = {
     activated: {},
 
+    add: (skill) => {
+        filter.activated[skill] = false;
+        let obj = filterView.add(skill);
+
+        obj.click(() => { filter.by(skill) });
+    },
+
     search: async () => {
         let query = $("#searchBar").val().trim();
         let found = [];
@@ -17,13 +24,8 @@ const filter = {
         found = shuffle(found);
         addButtons(found, found.length, false);
         filterView.makeTermsAppear();
-    },
-
-    add: (skill) => {
-        filter.activated[skill] = false;
-        let obj = filterView.add(skill);
-
-        obj.click(() => { filter.by(skill) });
+        player.playingIndex = -1;
+        player.stop();
     },
 
     by: async (skill) => {
@@ -53,6 +55,8 @@ const filter = {
         filteredVocab = shuffle(filteredVocab);
         addButtons(filteredVocab, filteredVocab.length, false);
         filterView.makeTermsAppear();
+        player.playingIndex = -1;
+        player.stop();
     },
 
     getActivatedCount: () => {

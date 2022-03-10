@@ -27,7 +27,8 @@
 
 .featured {
     animation-delay: 0.8s;
-    animation: featured 1.5s linear;
+    animation: featured 1.5s ease;
+    animation-iteration-count: 2;
 }
 
 @keyframes featured {
@@ -36,7 +37,7 @@
     }
 
     30% {
-        transform: scale(1.07);
+        transform: scale(1.06);
     }
 
     55% {
@@ -44,7 +45,7 @@
     }
 
     75% {
-        transform: scale(1.07);
+        transform: scale(1.06);
     }
 
     100% {

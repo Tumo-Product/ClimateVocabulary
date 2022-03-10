@@ -98,7 +98,7 @@ const addButtons = async (vocab, length, animate, featuredWords, activatedWords)
                 return;
             }
             let progressBarCount = recordings[key].sources.length;
-            let index = vocab.indexOf(key);
+            let index = shuffledVocab.indexOf(key);
             let obj = view.addTerm(index, key, r, from, progressBarCount, featured, disabled);
             obj.click(() => { player.play(index) });
 
@@ -135,7 +135,7 @@ const setupRecordingView = async () => {
 const setupFinalView = async () => {
     view.move(1);
 
-    let indices = getRandomIndices(4, 12);
+    let indices = getRandomIndices(4, 9);
 
     let featuredWords = [];
     for (let i = 0; i < newRecordings.length; i++) {
@@ -161,6 +161,8 @@ if (recording) {
     $(".downButton").removeClass("deactivated disabled");
     $(onLoad);
 }
+
+// $(onLoad);
 
 // TESTING TOOLS ----------------------
 const intoJson = (string) => {

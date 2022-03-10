@@ -58,8 +58,13 @@ const player = {
 
         enable          : (index) => {
             $(".progressBars").css("opacity", 0);
-
             $(`#w_${index} .progressBars`).css("opacity", 1);
+            $(`#w_${index}`).removeClass("inactiveTerm");
+            $("#container .term").each(function (termIndex) {
+                if (termIndex !== index) {
+                    $(this).addClass("inactiveTerm");
+                }
+            });
         }
     },
 
@@ -118,7 +123,7 @@ const player = {
             
             if (time >= duration) {
                 listenedTo();
-                player.stop(index);
+                player.stop();
             }
 
             if (time < 0) time = 0;
@@ -151,5 +156,6 @@ const player = {
         document.getElementById('otherVoice').currentTime = 0;
         clearInterval(player.pauseInterval);
         clearInterval(player.interval);
+        player.view.updateProgress(player.playingIndex, player.progress[player.playingIndex], 100);
     }
 }
