@@ -5,7 +5,6 @@ let recordings = {};
 let newRecordings = [];
 let skills = [];
 let owners = [ "1" ];
-let listened = 0;
 
 let currBaseAudio;
 let audioStream;
@@ -33,8 +32,14 @@ const onLoad = async () => {
     found = found.data.found;
 
     for (let i = 0; i < found.length; i++) {
-        found[i].sources = await shuffle(found[i].sources);
+        if (!set.starters.includes(found[i].term)) {
+            found[i].sources = await shuffle(found[i].sources);
+        }
         recordings[found[i].term] = { skill: found[i].skill, sources: found[i].sources };
+    }
+
+    for (const word of set.starters) {
+        wordsListenedTo[word] = false;
     }
 
     audioManager.setup();
@@ -52,11 +57,15 @@ const setupEvents = async () => {
     $("#searchBtn").click(filter.search);
 }
 
-const listenedTo = () => {
-    listened++;
-    if (listened === 4) {
-        view.enableButton("downButton");
+let wordsListenedTo = {};
+const listenedTo = (word) => {
+    wordsListenedTo[word] = true;
+    
+    for (const word in wordsListenedTo) {
+        if (!wordsListenedTo[word]) return;
     }
+
+    view.enableButton("downButton");
 }
 
 const onStart = async () => {
@@ -165,7 +174,7 @@ if (recording) {
     $(onLoad);
 }
 
-// $(onLoad);
+$(onLoad);
 
 // TESTING TOOLS ----------------------
 const intoJson = (string) => {

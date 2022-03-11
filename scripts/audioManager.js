@@ -122,7 +122,9 @@ const player = {
             player.view.updateProgress(index, player.progress[index], progress);
             
             if (time >= duration) {
-                listenedTo();
+                if (player.progress[index] === 0) {
+                    listenedTo(shuffledVocab[index]);
+                }
                 player.stop();
             }
 
