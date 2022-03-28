@@ -174,7 +174,7 @@ if (recording) {
     $(onLoad);
 }
 
-$(onLoad);
+// $(onLoad);
 
 // TESTING TOOLS ----------------------
 const intoJson = (string) => {
