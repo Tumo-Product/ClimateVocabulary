@@ -127,8 +127,8 @@ const replaceWith = (vocab, target, index) => {
 }
 
 const setupRecordingView = async () => {
-    // audioStream = await audioManager.getAudioStream();
-    // recorder    = new Recorder(audioStream);
+    audioStream = await audioManager.getAudioStream();
+    recorder    = new Recorder(audioStream);
 
     view.move(-1);
     controller.setup();
@@ -174,7 +174,7 @@ if (recording) {
     $(onLoad);
 }
 
-// $(onLoad);
+$(onLoad);
 
 // TESTING TOOLS ----------------------
 const intoJson = (string) => {
