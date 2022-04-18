@@ -13,7 +13,7 @@ let recorder;
 let answers = [];
 
 const onLoad = async () => {
-    let data = await network.getVocabulary();
+    let data    = await network.getVocabulary();
     vocabulary  = data.vocabulary;
 
     for (const key in vocabulary) {

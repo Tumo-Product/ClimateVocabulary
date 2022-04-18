@@ -1,8 +1,8 @@
 axios.defaults.baseURL = "https://content-tools.tumo.world:4000";
 
 const config = {
-    addRecording: '/climate_vocabulary/add_recording',
-    list        : '/climate_vocabulary/list_recordings'
+    addRecording: '/climate_vocabulary/recordings/add',
+    list        : '/climate_vocabulary/recordings/list'
 }
 
 const network = {
