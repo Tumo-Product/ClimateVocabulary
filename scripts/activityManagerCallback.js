@@ -9,7 +9,6 @@ const initialize = async () => {
             return;
         }
     
-        console.log(event.data.message);
         console.log(event.data);
     
         switch(event.data.message) {
@@ -23,11 +22,10 @@ const initialize = async () => {
                     }
                 }
 
-
                 await onLoad();
 
                 if (window.location.href.includes("examiner")) {
-                    onExaminerLoad(data.answers);
+                    onExaminerLoad(data.answers[0]);
                 }
             break;
         }
@@ -44,7 +42,7 @@ const setAnswers = (outcome) => {
     window.parent.postMessage({
         application: 'activity-manager',
         message: 'set-answers',
-        data: { answers: outcome }
+        data: { answers: [outcome] }
     }, '*');
 }
 

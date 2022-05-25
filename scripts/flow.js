@@ -94,12 +94,8 @@ const addButtons = async (vocab, length, animate, featuredWords, activatedWords)
             let disabled = false;
             let featured = false;
 
-            if (Array.isArray(activatedWords)) {
-                disabled = !activatedWords.includes(key);
-            }
-            if (Array.isArray(featuredWords)) {
-                featured = featuredWords.includes(key);
-            }
+            if (Array.isArray(activatedWords)) disabled = !activatedWords.includes(key);
+            if (Array.isArray(featuredWords)) featured = featuredWords.includes(key);
 
             let from = whichSkill(key);
             if (recordings[key] === undefined) {
@@ -155,6 +151,7 @@ const setupFinalView = async () => {
     view.setupFinalView();
     filterView.show();
     addButtons(shuffledVocab, Object.keys(recordings).length, false, featuredWords);
+    setAnswers(answers);
 }
 
 const whichSkill = (word) => {
